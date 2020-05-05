@@ -1,2 +1,2 @@
-# Powershell Course
+# PowerShell Course
 
