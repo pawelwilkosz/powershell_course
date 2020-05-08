@@ -1,11 +1,14 @@
-# Add to registry HKEY_CRRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer
-# Value DontPrettyPath 1
+# Export to CSV
+Get-Process | Export-CSV proces.csv
 
-cd HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer
-cd advanced
-Set-ItemProperty -Path . -Name DontPropertyPath -Value 1
+# To read 
+Import-Csv proces.csv
 
-# In C:\Tmp create new directory Test and new empty file test using New-Item command
-New-Item -Path . -ItemType Directory -Name Test
-cd Test
-New-Item -Path . -ItemType File -Name File.txt
+# Export to XML
+Get-Process | Export-CliXML proces.xml
+
+# Compare property name between csv and actual running processes
+diff -reference (Import-Csv proces.csv) -difference (Get-Process) -property name
+
+# Put command results to the HTML file
+Get-Process | ConvertTo-Html | Out-File index.html
