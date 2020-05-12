@@ -1,7 +1,7 @@
 # Export to CSV
 Get-Process | Export-CSV proces.csv
 
-# To read 
+# To read process and store them in csv format
 Import-Csv proces.csv
 
 # Export to XML
